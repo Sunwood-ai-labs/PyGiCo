@@ -1,17 +1,16 @@
 [tool.poetry]
 name = "pygico-imagegen"
-authors = [{name = "Your Name", email = "your.email@example.com"}]
+version = "0.1.0"
 description = "Python, GIMP, and ComfyUI based image generation and text addition tool"
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
 readme = "README.md"
-requires-python = ">=3.8"
-license = {text = "MIT"}
+packages = [{include = "pygico_imagegen"}]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dynamic = ["version", "dependencies"]
-version = "0.1.0"
 
 [project.optional-dependencies]
 dev = [
