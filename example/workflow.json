@@ -1,0 +1,310 @@
+{
+  "11": {
+    "inputs": {
+      "clip_name1": "clip_g.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "clip_name3": "t5xxl_fp16.safetensors"
+    },
+    "class_type": "TripleCLIPLoader",
+    "_meta": {
+      "title": "TripleCLIPLoader"
+    }
+  },
+  "13": {
+    "inputs": {
+      "shift": 3,
+      "model": [
+        "252",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingSD3",
+    "_meta": {
+      "title": "ModelSamplingSD3"
+    }
+  },
+  "67": {
+    "inputs": {
+      "conditioning": [
+        "71",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "ConditioningZeroOut"
+    }
+  },
+  "68": {
+    "inputs": {
+      "start": 0.1,
+      "end": 1,
+      "conditioning": [
+        "67",
+        0
+      ]
+    },
+    "class_type": "ConditioningSetTimestepRange",
+    "_meta": {
+      "title": "ConditioningSetTimestepRange"
+    }
+  },
+  "69": {
+    "inputs": {
+      "conditioning_1": [
+        "68",
+        0
+      ],
+      "conditioning_2": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "ConditioningCombine",
+    "_meta": {
+      "title": "Conditioning (Combine)"
+    }
+  },
+  "70": {
+    "inputs": {
+      "start": 0,
+      "end": 0.1,
+      "conditioning": [
+        "71",
+        0
+      ]
+    },
+    "class_type": "ConditioningSetTimestepRange",
+    "_meta": {
+      "title": "ConditioningSetTimestepRange"
+    }
+  },
+  "71": {
+    "inputs": {
+      "text": "lowres, bad anatomy, bad hands, text, error, missing fingers, cropped, worst quality, low quality,normal quality, blurry, lowres,\n",
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "135": {
+    "inputs": {
+      "width": 1024,
+      "height": 600,
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "231": {
+    "inputs": {
+      "samples": [
+        "271",
+        0
+      ],
+      "vae": [
+        "252",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "233": {
+    "inputs": {
+      "images": [
+        "267",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "252": {
+    "inputs": {
+      "ckpt_name": "sd3_medium_incl_clips.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "267": {
+    "inputs": {
+      "upscale_by": 2,
+      "seed": 601337636939994,
+      "steps": 15,
+      "cfg": 5,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "sgm_uniform",
+      "denoise": 0.15,
+      "mode_type": "Chess",
+      "tile_width": 1024,
+      "tile_height": 1024,
+      "mask_blur": 8,
+      "tile_padding": 32,
+      "seam_fix_mode": "None",
+      "seam_fix_denoise": 1,
+      "seam_fix_width": 64,
+      "seam_fix_mask_blur": 8,
+      "seam_fix_padding": 16,
+      "force_uniform_tiles": true,
+      "tiled_decode": false,
+      "image": [
+        "231",
+        0
+      ],
+      "model": [
+        "13",
+        0
+      ],
+      "positive": [
+        "283",
+        0
+      ],
+      "negative": [
+        "69",
+        0
+      ],
+      "vae": [
+        "252",
+        2
+      ],
+      "upscale_model": [
+        "269",
+        0
+      ]
+    },
+    "class_type": "UltimateSDUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale"
+    }
+  },
+  "269": {
+    "inputs": {
+      "model_name": "4x-UltraSharp.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "270": {
+    "inputs": {
+      "images": [
+        "231",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "271": {
+    "inputs": {
+      "seed": 601337636939994,
+      "steps": 28,
+      "cfg": 4.5,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "sgm_uniform",
+      "denoise": 1,
+      "model": [
+        "13",
+        0
+      ],
+      "positive": [
+        "283",
+        0
+      ],
+      "negative": [
+        "69",
+        0
+      ],
+      "latent_image": [
+        "135",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "273": {
+    "inputs": {
+      "filename_prefix": "ComfyUI_low",
+      "images": [
+        "231",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "274": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "267",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "281": {
+    "inputs": {
+      "image": "a-surreal-watercolor-painting-that-depicts-an-ethe-OCZsfWFSTAegBYtFL86cnw-kGl0UMLaRSedOQY1GSxx4A.jpeg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "282": {
+    "inputs": {
+      "clip_l": "anime, Kawaii, (masterpiece:1.3),(best quality:1.1),(highres:1.1),(very aesthetic:1.1),1girl,(black hair:1.2), (messy hair:0.3), (medium hair:1.1), (swept bangs:1.1),(blue eyes:1.2), (upturned eyes:1.1),eyelashes, (pantyhose:1.1), light smile, upper body,\n",
+      "clip_g": "anime, Kawaii, (masterpiece:1.3),(best quality:1.1),(highres:1.1),(very aesthetic:1.1),1girl,(black hair:1.2), (messy hair:0.3), (medium hair:1.1), (swept bangs:1.1),(blue eyes:1.2), (upturned eyes:1.1),eyelashes, (pantyhose:1.1), light smile, upper body,\n",
+      "t5xxl": "anime, Kawaii, (masterpiece:1.3),(best quality:1.1),(highres:1.1),(very aesthetic:1.1),1girl,(black hair:1.2), (messy hair:0.3), (medium hair:1.1), (swept bangs:1.1),(blue eyes:1.2), (upturned eyes:1.1),eyelashes, (pantyhose:1.1), light smile, upper body,\n",
+      "empty_padding": "none",
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeSD3",
+    "_meta": {
+      "title": "CLIPTextEncodeSD3"
+    }
+  },
+  "283": {
+    "inputs": {
+      "text": "This image is a digital art piece depicting a owl with striking features that are commonly found in anime or manga illustrations. \n\nowl has large, expressive blue eyes . ",
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  }
+}
