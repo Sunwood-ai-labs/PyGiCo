@@ -157,6 +157,17 @@ pip install -e .[dev]
 pytest
 ```
 
+```bash
+poetry cache clear pypi --all
+poetry update
+poetry add pygimp-labs
+```
+
+
+```bash
+poetry add --group dev C:\Prj\PyGIMP
+```
+
 ## ライセンス
 
 このプロジェクトはMITライセンスの下で公開されています。詳細は [LICENSE](LICENSE) ファイルを参照してください。
