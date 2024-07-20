@@ -5,15 +5,22 @@ from loguru import logger
 from art import text2art
 from pygico_imagegen.utils.config_manager import ConfigManager
 from pygico_imagegen.config import settings
+from pprint import pprint
 
 def main():
     print(text2art("PyGIMP USAGE"))
 
+    # 設定内容を表示
+    logger.info("Current settings:")
+    pprint(settings.model_dump())
+    # raise
+
     config = ConfigManager()
     logger.info("PyGiCo-ImageGen を開始します")
     blog_path = "sample_blog.md"
-    text = "Hello GIMP 1"
-    output_path = "output.png"
+    text = "Hello PyGiCo"
+    output_path = "output1.png"
+    gimp_path = "gimp-console-2.10.exe"
     
     # ブログ内容の抽出
     logger.info(f"ブログファイル {blog_path} から内容を抽出します")
@@ -33,7 +40,7 @@ def main():
 
     # テキストの追加
     logger.info(f"画像にテキスト '{text}' を追加します")
-    gimp = GimpExecutor(settings.GIMP_PATH)
+    gimp = GimpExecutor(gimp_path)
     temp_path = f"{text}.temp.png"
     image[-1].save(temp_path)
     gimp.add_text(temp_path, text, output_path)
