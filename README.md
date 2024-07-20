@@ -23,7 +23,7 @@
 <p align="center">
   <a href="https://hamaruki.com/"><b>[🌐 Website]</b></a> •
   <a href="https://github.com/Sunwood-ai-labs"><b>[🐱 GitHub]</b></a>
-  <a href="https://x.com/hAru_mAki_ch"><b>[🐦 Twitter]</b></a> •
+  <a href="https://twitter.com/hAru_mAki_ch"><b>[🐦 Twitter]</b></a> •
   <a href="https://hamaruki.com/"><b>[🍀 Official Blog]</b></a>
 </p>
 
@@ -35,6 +35,8 @@
 >このリポジトリのリリースノートやREADME、コミットメッセージの9割近くは[claude.ai](https://claude.ai/)や[ChatGPT4](https://chatgpt.com/)を活用した[AIRA](https://github.com/Sunwood-ai-labs/AIRA), [SourceSage](https://github.com/Sunwood-ai-labs/SourceSage), [Gaiah](https://github.com/Sunwood-ai-labs/Gaiah), [HarmonAI_II](https://github.com/Sunwood-ai-labs/HarmonAI_II)で生成しています。
 
 
+## PyGiCo とは
+
 PyGiCo-ImageGenは、Python、GIMP、ComfyUIを使用して、ブログコンテンツから画像を生成し、テキストを追加するツールです。
 
 ## 機能
@@ -44,6 +46,21 @@ PyGiCo-ImageGenは、Python、GIMP、ComfyUIを使用して、ブログコンテ
 - ComfyUIを使用した高品質な画像生成
 - GIMPを利用した画像へのテキスト追加
 - コマンドラインインターフェース（CLI）とPythonパッケージの両方をサポート
+- ワークフローのカスタマイズと設定管理
+
+## 構成
+
+PyGiCoはモジュール構造を採用し、以下の主要コンポーネントで構成されています。
+
+1. **content_analysis**: 
+    - `blog_extractor.py`: ブログ記事からコンテンツを抽出します。
+    - `prompt_generator.py`: 抽出されたコンテンツに基づいて画像生成プロンプトを作成します。
+2. **image_generation**: 
+    - `comfy_interface.py`: ComfyUIと連携して画像を生成します。
+3. **image_processing**: 
+    - `gimp_executor.py`: GIMPを使用して画像にテキストを追加します。
+4. **utils**: 
+    - `config_manager.py`: 環境変数や設定ファイルから設定を読み込みます。
 
 ## インストール
 
@@ -79,8 +96,40 @@ gimp.add_text(image, "追加するテキスト", "output.png")
 
 ## 設定
 
+PyGiCoは環境変数または設定ファイルから設定を読み込みます。
+
 - 環境変数: `.env` ファイルまたはシステム環境変数で設定
 - コンフィグファイル: `~/.config/pygico-imagegen/config.json` に配置
+
+## Example
+
+PyGiCoを実際に使用するための手順を以下に示します。
+
+### 前提条件
+
+- **ComfyUIのインストール**: [ComfyUIのインストールガイド](https://github.com/comfyanonymous/ComfyUI)に従って、ComfyUIをインストールしてください。
+- **GIMPのインストール**: [GIMPのダウンロードページ](https://www.gimp.org/downloads/)からGIMPをダウンロードしてインストールしてください。
+
+### 実行環境の準備
+
+1. **PyGiCoのインストール**: 上記のインストール手順に従ってPyGiCoをインストールします。
+2. **ComfyUIの起動**: ComfyUIを起動し、APIが有効になっていることを確認します。
+3. **GIMPの実行ファイルパスを確認**: GIMPの実行ファイルパス（例：`C:\Program Files\GIMP 2\bin\gimp-console-2.10.exe`）を確認し、必要であれば設定ファイルに指定します。
+
+### 実行例
+
+#### 1. CLI を使用した実行例
+
+```bash
+pygico-imagegen --blog example/blog.txt --output output.png --text "追加するテキスト"
+```
+
+#### 2. Python スクリプトを使用した実行例
+
+```bash
+cd example
+python python_usage.py
+```
 
 ## 開発者向け情報
 
@@ -102,7 +151,6 @@ pip install -e .[dev]
 ```
 pytest
 ```
-
 
 ## ライセンス
 
