@@ -48,6 +48,11 @@ PyGiCo-ImageGenは、Python、GIMP、ComfyUIを使用して、ブログコンテ
 - コマンドラインインターフェース（CLI）とPythonパッケージの両方をサポート
 - ワークフローのカスタマイズと設定管理
 
+
+## デモ動画
+
+https://github.com/user-attachments/assets/7e5d4d97-1461-4484-9552-7488d04c701b
+
 ## 構成
 
 PyGiCoはモジュール構造を採用し、以下の主要コンポーネントで構成されています。
