@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "poetry-core>=1.0.0"]
+build-backend = "setuptools.build_meta"
+
 [tool.poetry]
 name = "pygico-imagegen"
 version = "0.1.0"
@@ -6,11 +10,53 @@ authors = ["Your Name <your.email@example.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "pygico_imagegen"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+click = "*"
+pillow = "*"
+requests = "*"
+python-dotenv = "*"
+loguru = "*"
+litellm = "*"
+pydantic-settings = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+black = "*"
+isort = "*"
+mypy = "*"
+flake8 = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
+
+[tool.poetry.scripts]
+pygico-imagegen = "pygico_imagegen.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["pygico_imagegen*"]
+exclude = ["tests*"]
+
+[project]
+name = "pygico-imagegen"
+version = "0.1.0"
+description = "Python, GIMP, and ComfyUI based image generation and text addition tool"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
 classifiers = [
-    "Programming Language :: Python :: 3",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
 ]
+
+[project.scripts]
+pygico-imagegen = "pygico_imagegen.cli:main"
 
 [project.optional-dependencies]
 dev = [
@@ -22,14 +68,3 @@ dev = [
     "sphinx",
     "sphinx-rtd-theme",
 ]
-
-[build-system]
-requires = ["setuptools>=45", "wheel"]
-build-backend = "setuptools.build_meta"
-
-
-[project.scripts]
-pygico-imagegen = "pygico_imagegen.cli:main"
-
-[tool.setuptools]
-packages = ["pygico_imagegen"]

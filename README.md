@@ -84,27 +84,25 @@ gimp.add_text(image, "追加するテキスト", "output.png")
 
 ## 開発者向け情報
 
-1. リポジトリのクローン:
-   ```
-   git clone https://github.com/yourusername/pygico-imagegen.git
-   cd pygico-imagegen
-   ```
+### 1. リポジトリのクローン:
 
-2. 開発用依存関係のインストール:
-   ```
-   pip install -e .[dev]
-   ```
+```
+git clone https://github.com/yourusername/pygico-imagegen.git
+cd pygico-imagegen
+```
 
-3. テストの実行:
-   ```
-   pytest
-   ```
+### 2. 開発用依存関係のインストール:
 
-4. コードスタイルのチェック:
-   ```
-   black .
-   isort .
-   ```
+```
+pip install -e .[dev]
+```
+
+### 3. テストの実行:
+
+```
+pytest
+```
+
 
 ## ライセンス
 
