@@ -1,56 +1,11 @@
-from setuptools import setup, find_packages
-
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+from setuptools import setup
 
 setup(
     name="pygico-imagegen",
     version="0.1.0",
-    author="Your Name",
-    author_email="your.email@example.com",
-    description="Python, GIMP, and ComfyUI based image generation and text addition tool",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/pygico-imagegen",
-    packages=find_packages(exclude=["tests", "tests.*"]),
-    classifiers=[
-        "Development Status :: 3 - Alpha",
-        "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-    ],
-    python_requires=">=3.8",
-    install_requires=[
-        "click",
-        "pillow",
-        "requests",
-        "python-dotenv",
-        "loguru",
-        "litellm",
-        "pydantic-settings",
-    ],
-    extras_require={
-        "dev": [
-            "pytest",
-            "black",
-            "isort",
-            "mypy",
-            "flake8",
-            "sphinx",
-            "sphinx-rtd-theme",
-        ],
-    },
-    entry_points={
-        "console_scripts": [
-            "pygico-imagegen=pygico_imagegen.cli:main",
-        ],
-    },
-    include_package_data=True,
+    packages=["pygico_imagegen"],
     package_data={
         "pygico_imagegen": ["py.typed"],
     },
+    include_package_data=True,
 )
