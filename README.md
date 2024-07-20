@@ -34,52 +34,82 @@
 >[!IMPORTANT]
 >このリポジトリのリリースノートやREADME、コミットメッセージの9割近くは[claude.ai](https://claude.ai/)や[ChatGPT4](https://chatgpt.com/)を活用した[AIRA](https://github.com/Sunwood-ai-labs/AIRA), [SourceSage](https://github.com/Sunwood-ai-labs/SourceSage), [Gaiah](https://github.com/Sunwood-ai-labs/Gaiah), [HarmonAI_II](https://github.com/Sunwood-ai-labs/HarmonAI_II)で生成しています。
 
-# PyGiCo-ImageGen README
 
-## 🌟 Introduction
+PyGiCo-ImageGenは、Python、GIMP、ComfyUIを使用して、ブログコンテンツから画像を生成し、テキストを追加するツールです。
 
-PyGiCo-ImageGenは、ブログコンテンツから魅力的な画像を生成し、テキストを追加するための便利なツールです。このプロジェクトは、Python、GIMP、およびComfyUIを組み合わせて利用することで、ユーザーが簡単にコンテンツに合わせた画像を作成できるように設計されています。
+## 機能
 
-## 🎥 Demo
+- ブログ記事からの内容抽出
+- 抽出されたコンテンツに基づく画像生成プロンプトの作成
+- ComfyUIを使用した高品質な画像生成
+- GIMPを利用した画像へのテキスト追加
+- コマンドラインインターフェース（CLI）とPythonパッケージの両方をサポート
 
-デモ動画や使用例は、[こちらのリンク](#)からご覧いただけます。ブログコンテンツから画像を生成する流れや、テキストを画像に追加する手順を示しています。
+## インストール
 
-## 🚀 Getting Started
+```bash
+pip install pygico-imagegen
+```
 
-このツールを使い始めるための手順は以下の通りです：
+## 使用方法
 
-1. リポジトリをクローンします：
+### コマンドラインインターフェース
+
+```bash
+pygico-imagegen --blog path/to/blog.txt --output output.png --text "追加するテキスト"
+```
+
+### Pythonパッケージとして
+
+```python
+from pygico_imagegen import BlogExtractor, PromptGenerator, ComfyInterface, GimpExecutor
+
+extractor = BlogExtractor("path/to/blog.txt")
+content = extractor.extract()
+
+generator = PromptGenerator()
+prompt = generator.generate(content)
+
+comfy = ComfyInterface()
+image = comfy.generate_image(prompt)
+
+gimp = GimpExecutor()
+gimp.add_text(image, "追加するテキスト", "output.png")
+```
+
+## 設定
+
+- 環境変数: `.env` ファイルまたはシステム環境変数で設定
+- コンフィグファイル: `~/.config/pygico-imagegen/config.json` に配置
+
+## 開発者向け情報
+
+1. リポジトリのクローン:
    ```
-   git clone https://github.com/yourusername/PyGiCo-ImageGen.git
+   git clone https://github.com/yourusername/pygico-imagegen.git
+   cd pygico-imagegen
    ```
 
-2. 必要なライブラリをインストールします：
+2. 開発用依存関係のインストール:
    ```
-   pip install -r requirements.txt
+   pip install -e .[dev]
    ```
 
-3. GIMPとComfyUIをインストールして設定します。
+3. テストの実行:
+   ```
+   pytest
+   ```
 
-4. コマンドラインからツールを実行するか、Pythonスクリプトとして使用します。詳細な使い方は[ドキュメント](#)を参照してください。
+4. コードスタイルのチェック:
+   ```
+   black .
+   isort .
+   ```
 
-## 📝 Updates
+## ライセンス
 
-プロジェクトは定期的に更新され、新機能やバグ修正が行われます。最新情報はリリースノートやコミットログを確認してください。
+このプロジェクトはMITライセンスの下で公開されています。詳細は [LICENSE](LICENSE) ファイルを参照してください。
 
-## 🤝 Contributing
+## コントリビューション
 
-貢献を希望する方は、以下の手順に従ってください：
-
-1. リポジトリをフォークします。
-2. 新しい機能やバグ修正を行ってください。
-3. プルリクエストを提出します。
-
-その他の貢献方法については、[CONTRIBUTING.md](#)をご覧ください。
-
-## 📄 License
-
-このプロジェクトは[MIT License](#)の下でライセンスされています。
-
-## 🙏 Acknowledgements
-
-このプロジェクトは、Python、GIMP、およびComfyUIのコミュニティの貢献に感謝しています。また、使用しているライブラリとリソースの開発者にも感謝の意を表します。
+バグ報告、機能リクエスト、プルリクエストを歓迎します。大きな変更を加える前に、まずissueを開いて議論してください。
