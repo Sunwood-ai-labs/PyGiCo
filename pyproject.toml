@@ -4,12 +4,22 @@ build-backend = "setuptools.build_meta"
 
 [tool.poetry]
 name = "pygico-imagegen"
-version = "0.1.1"
+version = "0.1.2"
 description = "Python, GIMP, and ComfyUI based image generation and text addition tool"
-authors = ["Your Name <your.email@example.com>"]
+authors = ["Maki <sunwood.ai.labs@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "pygico_imagegen"}]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -39,23 +49,6 @@ pygico-imagegen = "pygico_imagegen.cli:main"
 include = ["pygico_imagegen*"]
 exclude = ["tests*"]
 
-[project]
-name = "pygico-imagegen"
-version = "0.1.0"
-description = "Python, GIMP, and ComfyUI based image generation and text addition tool"
-readme = "README.md"
-requires-python = ">=3.8"
-license = {text = "MIT"}
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-]
 
 [project.scripts]
 pygico-imagegen = "pygico_imagegen.cli:main"
