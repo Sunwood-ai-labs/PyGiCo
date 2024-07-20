@@ -1,9 +1,9 @@
 {
   "arguments": {
     "font_size": "78",
-    "input_image": "final_image.png.temp.png",
-    "output_path": "final_image.png",
-    "text": "サンプルテキスト"
+    "input_image": "Hello PyGiCo.temp.png",
+    "output_path": "output1.png",
+    "text": "Hello PyGiCo"
   },
   "script_path": "gimp_script_template.py"
 }
