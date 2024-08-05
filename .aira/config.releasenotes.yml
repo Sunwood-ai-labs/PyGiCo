@@ -2,14 +2,14 @@ ss-mode:
  - DocuMind
 docuMind-model: "gpt-4o-mini"
 docuMind-db: ".SourceSageAssets/DOCUMIND/Repository_summary.md"
-docuMind-release-report: ".SourceSageAssets/RELEASE_REPORT/Report_v0.1.0.md"
+docuMind-release-report: ".SourceSageAssets/RELEASE_REPORT/Report_v0.1.5.md"
 docuMind-changelog: ".SourceSageAssets/Changelog/CHANGELOG_main.md"
-docuMind-output: ".SourceSageAssets/DOCUMIND/RELEASE_NOTES_v0.1.0.md"
-docuMind-prompt-output: ".SourceSageAssets/DOCUMIND/_PROMPT_v0.1.0.md"
+docuMind-output: ".SourceSageAssets/DOCUMIND/RELEASE_NOTES_v0.1.5.md"
+docuMind-prompt-output: ".SourceSageAssets/DOCUMIND/_PROMPT_v0.1.5.md"
 repo-name: "PyGiCo"
-repo-version: "v0.1.0"
+repo-version: "v0.1.5"
 
-# changelog-start-tag: "v0.1.0"
+# changelog-start-tag: "v0.1.5"
 # changelog-end-tag: "v0.5.0"
 # sourcesage --ss-mode=DocuMind --yaml-file=.aira\config.releasenotes.yml
 # aira --mode sourcesage --config=.aira\config.dev.commit.yml  --ss-mode=DocuMind --yaml-file=.aira\.sourcesage_releasenotes.yml
