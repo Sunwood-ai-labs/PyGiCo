@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pygico-imagegen"
-version = "0.1.5"
+version = "0.2.0"
 description = "Python, GIMP, and ComfyUI based image generation and text addition tool"
 authors = [{name = "Your Name", email = "your.email@example.com"}]
 requires-python = ">=3.8.1"
@@ -31,7 +31,12 @@ dependencies = [
 ]
 
 [tool.poetry]
-# Poetry will use the [project] section for most metadata
+name = "pygico-imagegen"
+version = "0.2.0"
+description = "Python, GIMP, and ComfyUI based image generation and text addition tool"
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT"
+readme = "README.md"
 packages = [{include = "pygico_imagegen"}]
 
 [tool.poetry.dependencies]
@@ -43,6 +48,8 @@ python-dotenv = "^1.0.1"
 loguru = "^0.7.2"
 litellm = "^1.41.25"
 pydantic-settings = "^2.3.4"
+rich = "^13.7.1"
+pyfiglet = "^1.0.2"
 
 [tool.poetry.group.dev.dependencies]
 python = "^3.8"
